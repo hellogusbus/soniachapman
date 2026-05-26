@@ -60,6 +60,23 @@
     }
     .nav-links a:hover { color: var(--text); }
 
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -433,10 +450,29 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: rgba(250,248,244,0.98);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(200,213,185,0.4);
+        padding: 1rem 0;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.9rem 2rem;
+        font-size: 0.85rem;
+      }
       .hero { grid-template-columns: 1fr; }
       .hero-left { padding: 5rem 2rem 4rem; }
-      .hero-right { min-height: 350px; padding: 3rem 2rem; }
+      .hero-right { min-height: 380px; padding: 3rem 2rem; }
       #about, #contact { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
       section { padding: 4rem 2rem; }
       .approach-grid { grid-template-columns: 1fr; }
@@ -450,11 +486,14 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Sonia Chapman</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#approach">My Approach</a></li>
-    <li><a href="#areas">Areas</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#approach" onclick="closeNav()">My Approach</a></li>
+    <li><a href="#areas" onclick="closeNav()">Areas</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
   </ul>
 </nav>
 
@@ -692,6 +731,11 @@
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  function closeNav() { navLinks.classList.remove('open'); }
 
   // Intersection Observer for scroll-triggered fade-ins
   const obs = new IntersectionObserver((entries) => {

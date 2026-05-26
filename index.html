@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sonia Chapman — Counsellor & Psychotherapist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage:      #c8d5b9;
+      --sage-light:#e6ede0;
+      --blush:     #f2d9d0;
+      --blush-deep:#e8c4b8;
+      --lavender:  #d8d0e8;
+      --cream:     #faf8f4;
+      --warm-white:#fffdf9;
+      --text:      #3a3530;
+      --text-mid:  #6b6258;
+      --text-light:#9c948c;
+      --accent:    #8d7b6e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--warm-white);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(250,248,244,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,213,185,0.4);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 70px;
+    }
+    .hero-left {
+      background: var(--sage-light);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 6rem 5rem 6rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: var(--sage);
+      opacity: 0.5;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; bottom: 40px; left: 30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--blush);
+      opacity: 0.55;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-mid);
+      margin-bottom: 2.5rem;
+    }
+    .hero-tagline {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      max-width: 360px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      position: relative; z-index: 1;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--text);
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      position: relative; z-index: 1;
+    }
+    .btn:hover { background: var(--text); color: var(--warm-white); }
+
+    .hero-right {
+      background: var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; bottom: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: var(--blush-deep);
+      opacity: 0.6;
+    }
+    .portrait-frame {
+      width: 320px; height: 420px;
+      border-radius: 160px 160px 120px 120px;
+      background: var(--blush-deep);
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(141,123,110,0.18);
+    }
+    .portrait-placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.75rem; color: var(--accent); opacity: 0.7;
+      text-align: center; padding: 1rem;
+    }
+    .portrait-placeholder svg { width: 64px; height: 64px; }
+    .portrait-placeholder span {
+      font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; line-height: 1.5;
+    }
+
+    .bacp-badge {
+      position: absolute; bottom: 2.5rem; right: 2.5rem; z-index: 2;
+      background: var(--warm-white);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-mid);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 7rem 6rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .section-heading em { font-style: italic; color: var(--accent); }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-aside {}
+    .about-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--sage);
+    }
+    .about-body { font-size: 0.95rem; color: var(--text-mid); }
+    .about-body p { margin-bottom: 1.2rem; }
+
+    .about-facts {
+      margin-top: 3rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .fact-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(200,213,185,0.5);
+      font-size: 0.88rem;
+    }
+    .fact-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0; margin-top: 0.3rem;
+    }
+    .fact-label { font-weight: 500; color: var(--text); display: block; }
+    .fact-value { color: var(--text-mid); }
+
+    /* ── APPROACH ── */
+    #approach {
+      background: var(--lavender);
+      background: linear-gradient(135deg, #e8e2f4 0%, #dde6f0 100%);
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .approach-card {
+      background: rgba(255,255,255,0.55);
+      border-radius: 16px;
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+    .approach-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .approach-card p { font-size: 0.88rem; color: var(--text-mid); }
+    .approach-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(141,123,110,0.15);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── AREAS ── */
+    #areas { background: var(--warm-white); }
+    .areas-list {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+    .area-tag {
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    .area-tag:nth-child(3n+1) { background: var(--sage-light); color: var(--text); }
+    .area-tag:nth-child(3n+2) { background: var(--blush); color: var(--text); }
+    .area-tag:nth-child(3n)   { background: var(--lavender); color: var(--text); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--sage-light);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-info-block { }
+    .contact-intro {
+      font-size: 0.95rem; color: var(--text-mid);
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .contact-detail {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem; color: var(--text-mid);
+    }
+    .contact-detail svg { flex-shrink: 0; color: var(--accent); }
+
+    .contact-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.6);
+      border-radius: 12px;
+      border-left: 3px solid var(--sage);
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.85rem 1rem;
+      border: 1.5px solid rgba(200,213,185,0.6);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(200,213,185,0.3);
+    }
+    .form-group textarea { min-height: 130px; resize: vertical; }
+    .form-submit {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .btn-submit {
+      padding: 0.9rem 2.5rem;
+      background: var(--text);
+      color: var(--warm-white);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: var(--accent); transform: translateY(-1px); }
+    .form-privacy {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    .form-success {
+      display: none;
+      padding: 1.5rem;
+      background: rgba(200,213,185,0.3);
+      border-radius: 10px;
+      border: 1px solid var(--sage);
+      text-align: center;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.5);
+      padding: 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: rgba(255,255,255,0.8); }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 2rem 4rem; }
+      .hero-right { min-height: 350px; padding: 3rem 2rem; }
+      #about, #contact { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+      section { padding: 4rem 2rem; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Sonia Chapman</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#approach">My Approach</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade-up">BACP Accredited Psychotherapist</p>
+    <h1 class="hero-name fade-up delay-1">Sonia<br><em>Chapman</em></h1>
+    <p class="hero-title fade-up delay-2">Psychotherapist &amp; EMDR Therapist</p>
+    <p class="hero-tagline fade-up delay-3">
+      A supportive, non-judgemental space where you can feel safe, heard, and empowered to make lasting change — at your own pace.
+    </p>
+    <a class="btn fade-up delay-4" href="#contact">Get in touch</a>
+  </div>
+  <div class="hero-right">
+    <div class="portrait-frame">
+      <img src="images/profile.jpeg" alt="Sonia Chapman" style="width:100%; height:100%; object-fit:cover;" />
+    </div>
+    <div class="bacp-badge">✦ BACP Accredited · BUPA Recognised · Liverpool L18</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-aside">
+    <p class="section-label">About Me</p>
+    <h2 class="section-heading">A safe space<br>to <em>just be</em></h2>
+    <div class="about-facts">
+      <div class="fact-item">
+        <span class="fact-dot"></span>
+        <div>
+          <span class="fact-label">Location</span>
+          <span class="fact-value">South Liverpool, L18</span>
+        </div>
+      </div>
+      <div class="fact-item">
+        <span class="fact-dot"></span>
+        <div>
+          <span class="fact-label">Sessions</span>
+          <span class="fact-value">In-person &amp; online · 50 minutes</span>
+        </div>
+      </div>
+      <div class="fact-item">
+        <span class="fact-dot"></span>
+        <div>
+          <span class="fact-label">Availability</span>
+          <span class="fact-value">Mondays, Wednesday mornings &amp; Fridays</span>
+        </div>
+      </div>
+      <div class="fact-item">
+        <span class="fact-dot"></span>
+        <div>
+          <span class="fact-label">Accreditation</span>
+          <span class="fact-value">BACP Accredited · BUPA Recognised</span>
+        </div>
+      </div>
+      <div class="fact-item">
+        <span class="fact-dot"></span>
+        <div>
+          <span class="fact-label">Experience</span>
+          <span class="fact-value">10+ years</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="about-intro">
+      "You might be feeling overwhelmed, stuck, or disconnected from yourself. I offer a supportive space where you can feel safe, heard, and not judged."
+    </p>
+    <div class="about-body">
+      <p>I'm Sonia, a BACP Accredited psychotherapist with over 10 years of experience supporting people through some of life's most challenging times. I work with people who are navigating life transitions, relationship difficulties, burnout, and the impact of trauma, anxiety, or depression.</p>
+      <p>My approach is client-centred, collaborative, and integrative — we focus on what feels most important to you. Together, we'll work at your pace to explore your experiences, process difficult emotions, and understand what you need.</p>
+      <p>I draw on a range of therapeutic approaches, including EMDR (Eye Movement Desensitisation and Reprocessing) and Interpersonal Therapy, tailoring our work together to suit your individual needs.</p>
+      <p>I have particular experience supporting people affected by domestic abuse, grief, loss, and depression, and have worked extensively with young adults, neurodiverse people, those with experience of adoption or being in care, and members of LGBTQIA+ communities.</p>
+      <p>My practice is based in South Liverpool, in purpose-built therapy rooms nestled among trees and natural surroundings — a calming and restorative space for healing and growth. I am also a BUPA Recognised therapist and currently accepting BUPA patients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <p class="section-label">How I Work</p>
+  <h2 class="section-heading">My <em>approach</em></h2>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-number">01</div>
+      <h3>Person-Centred</h3>
+      <p>You are the expert on your own life. My role is to offer a warm, empathic space where you feel truly listened to and understood — free from judgement, and at your own pace.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-number">02</div>
+      <h3>EMDR &amp; Integrative</h3>
+      <p>I draw on EMDR (Eye Movement Desensitisation and Reprocessing), Interpersonal Therapy, and other integrative methods — tailoring our work to suit what you individually need.</p>
+    </div>
+    <div class="approach-card">
+      <div class="approach-number">03</div>
+      <h3>Collaborative</h3>
+      <p>Together we'll explore your experiences, process difficult emotions, and work towards helping you feel more grounded, self-aware, and empowered to make lasting, positive change.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <p class="section-label">Areas of Support</p>
+  <h2 class="section-heading">I can help <em>with</em></h2>
+  <div class="areas-list">
+    <span class="area-tag">Abuse</span>
+    <span class="area-tag">ADD / ADHD</span>
+    <span class="area-tag">Addictions</span>
+    <span class="area-tag">Adoption</span>
+    <span class="area-tag">Anger Management</span>
+    <span class="area-tag">Anxiety</span>
+    <span class="area-tag">Autism Spectrum</span>
+    <span class="area-tag">Baby Loss</span>
+    <span class="area-tag">Bereavement</span>
+    <span class="area-tag">Cancer</span>
+    <span class="area-tag">Chronic Fatigue / ME</span>
+    <span class="area-tag">Coercive Control</span>
+    <span class="area-tag">Depression</span>
+    <span class="area-tag">Disability</span>
+    <span class="area-tag">Domestic Abuse</span>
+    <span class="area-tag">Eating Disorders</span>
+    <span class="area-tag">Grief &amp; Loss</span>
+    <span class="area-tag">Identity Issues</span>
+    <span class="area-tag">Infertility</span>
+    <span class="area-tag">LGBTQ+ Counselling</span>
+    <span class="area-tag">Life Transitions</span>
+    <span class="area-tag">Mood Disorders</span>
+    <span class="area-tag">Narcissism</span>
+    <span class="area-tag">Neurodiversity</span>
+    <span class="area-tag">Pet Bereavement</span>
+    <span class="area-tag">Post-Traumatic Stress</span>
+    <span class="area-tag">Pregnancy Related Issues</span>
+    <span class="area-tag">Redundancy</span>
+    <span class="area-tag">Relationships</span>
+    <span class="area-tag">Self-Esteem</span>
+    <span class="area-tag">Self-Harm</span>
+    <span class="area-tag">Sexuality &amp; Sexual Identity</span>
+    <span class="area-tag">Stalking</span>
+    <span class="area-tag">Stress</span>
+    <span class="area-tag">Trauma</span>
+    <span class="area-tag">Women's Issues</span>
+    <span class="area-tag">Work-Related Issues</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info-block">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-heading">Ready to take the<br><em>first step?</em></h2>
+    <p class="contact-intro">
+      Reaching out for support takes courage. I'm currently available on Mondays, Wednesday mornings, and Fridays — for in-person sessions in South Liverpool or online. Please get in touch and we can find a time that works for you.
+    </p>
+    <div class="contact-detail">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+      </svg>
+      South Liverpool, L18 — in-person &amp; online
+    </div>
+    <div class="contact-detail">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      Mondays · Wednesday mornings · Fridays
+    </div>
+    <div class="contact-detail">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      BUPA Recognised — currently accepting BUPA patients
+    </div>
+    <div class="contact-note">
+      All enquiries are treated in strict confidence. I aim to respond within 48 hours.
+    </div>
+  </div>
+
+  <div>
+    <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Your last name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="+44 ..." />
+      </div>
+      <div class="form-group">
+        <label for="session-type">Preferred Session Type</label>
+        <select id="session-type" name="session-type">
+          <option value="">Please select…</option>
+          <option>In-person (Liverpool L18)</option>
+          <option>Online (video call)</option>
+          <option>Telephone</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">What brings you here?</label>
+        <textarea id="message" name="message" placeholder="A brief description of what you're hoping for from counselling — only share as much as you feel comfortable with."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Send Message</button>
+        <p class="form-privacy">Your message is confidential and will only be read by Sonia.</p>
+      </div>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <p>✦ Thank you for reaching out. Sonia will be in touch within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Sonia Chapman</span>
+  <span>BACP Accredited Psychotherapist · South Liverpool L18</span>
+  <span>BUPA Recognised · <a href="https://www.bacp.co.uk/therapists/373194/sonia-chapman/liverpool-l18" target="_blank">BACP Profile</a></span>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Intersection Observer for scroll-triggered fade-ins
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section-label, .section-heading, .about-intro, .about-body, .approach-card, .area-tag, .contact-intro, .contact-detail, .contact-note, .contact-form').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    obs.observe(el);
+  });
+</script>
+
+</body>
+</html>
